@@ -38,9 +38,9 @@ class ModASipmleHitCounteHelper {
             $actual_hits = (int)$file_data;
         }
         
-        $new_hits = $actual_hits;
-        JFile::write ($file, ++$new_hits);
+        $new_hits = $actual_hits + 1;
+        JFile::write ($file, $new_hits);
 
-        return $actual_hits;
+        return $new_hits;
     }
 }
