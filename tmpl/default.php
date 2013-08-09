@@ -12,8 +12,11 @@ defined('_JEXEC') or die;
 ?>
 
 <div class="asimple-hit-counter<?php echo $moduleclass_sfx ?>">
-	<?php echo ModASipmleHitCounteHelper::displayHits($stored); ?>
+
+	<?php echo ModASipmleHitCounteHelper::displayHits(); ?>
+
 	<?php if ($params->get('title_after')) : ?>
 		<?php echo JText::_('MOD_ASIMPLEHITCOUNTER_TITLE_BEFORE_LABEL'); ?>
 	<?php endif; ?>
+
 </div>

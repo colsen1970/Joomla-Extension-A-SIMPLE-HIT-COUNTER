@@ -13,9 +13,6 @@ defined('_JEXEC') or die;
 // Include the helper.
 require_once dirname(__FILE__) . '/helper.php';
 
-/* File with hits number */
-$stored = 'hits.txt';
-
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 
 require JModuleHelper::getLayoutPath('mod_asimplehitcounter', $params->get('layout', 'default'));
