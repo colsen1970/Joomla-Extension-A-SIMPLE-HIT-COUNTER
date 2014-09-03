@@ -15,4 +15,15 @@ require_once dirname(__FILE__) . '/helper.php';
 
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 
+// Add hit
+$hits_file = ModASipmleHitCounteHelper::hitsFromFile();
+$hits_params = ModASipmleHitCounteHelper::hitsFromParams($module);
+
+$hits = $hits_params;
+
+// Display hits from file
+if($params->get('hits_source', 0) == 1){
+    $hits = $hits_file;
+}
+
 require JModuleHelper::getLayoutPath('mod_asimplehitcounter', $params->get('layout', 'default'));

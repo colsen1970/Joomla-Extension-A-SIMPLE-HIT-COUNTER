@@ -26,7 +26,7 @@ class ModASipmleHitCounteHelper {
      * @param   string  file where the number is stored
      * @return  string  number of actual hits
      */
-    public static function displayHits() {
+    public static function hitsFromFile() {
 
         $actual_hits = 0;
 
@@ -48,5 +48,48 @@ class ModASipmleHitCounteHelper {
         JFile::write ($file, $new_hits);
 
         return $new_hits;
+    }
+
+    /*
+     * Add hit / Update params
+     * 
+     * @param   object  module object
+     * @return  string  number of actual hits
+     */
+    public static function hitsFromParams(&$module) {
+
+        // Convert the params field to an array.
+        $registry = new JRegistry;
+        $registry->loadString($module->params);
+        $module->params = $registry->toArray();
+        
+        $module->params['counter'] = $module->params['counter'] + 1;
+
+        $db = JFactory::getDbo();
+
+        $query = $db->getQuery(true);
+
+        // Convert the params array to an json string.
+        $registry = new JRegistry();
+        $registry->loadArray($module->params);
+        $new_params = (string) $registry;
+
+        // Fields to update.
+        $fields = array(
+            $db->quoteName('params') . ' = ' . $db->quote($new_params)
+        );
+
+        // Conditions for which records should be updated.
+        $conditions = array(
+            $db->quoteName('id') . ' = ' . $db->quote($module->id)
+        );
+
+        $query->update($db->quoteName('#__modules'))->set($fields)->where($conditions);
+
+        $db->setQuery($query);
+
+        $result = $db->query();
+
+        return $module->params['counter'];
     }
 }
