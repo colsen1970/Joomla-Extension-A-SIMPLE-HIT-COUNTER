@@ -7,13 +7,16 @@
     <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
     <authorEmail>peter@vavro.me</authorEmail>
     <authorUrl>joomla.vavro.me</authorUrl>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 
     <description><![CDATA[
         <h3>A Simple Hit Counter by Ing. Peter Vavro</h3>
         <p>
             Find out more at <b><a href="http://joomla.vavro.me/" title="joomla.vavro.me" target="_blank">joomla.vavro.me</a></b>
             <br/><b>Thank you.</b>
+        </p>
+        <p style="color:red;">
+          To get it work set caching of the website to "OFF - Caching disabled" in "ON - Conservative caching" and the module caching to "No caching".
         </p>
     ]]></description>
 
